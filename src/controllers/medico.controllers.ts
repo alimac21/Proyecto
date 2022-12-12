@@ -51,10 +51,11 @@ export const UpdateMedico = async (req: Request, res: Response) => {
     }
   }
 }
-//hngh
+//hnghlakshdlakshjd
 export const deleteMedico = async (req: Request, res: Response) =>{
   try{
     const{id} = req.params
+    const prueba = 5;
     const afected = await Medico.findOneBy({id: parseInt(id)})
   
   const result = await Medico.delete({id: parseInt(id)})
