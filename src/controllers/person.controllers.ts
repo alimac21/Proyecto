@@ -4,7 +4,7 @@ import { Person} from "../entities/person";
 
 export const createPerson = async (req: Request, res: Response) => {
     try {
-      const {nombre, apellido, identificacion, fecha_de_nacimiento, direccion, tipo_sangre, sexo} = req.body
+      const {nombre, apellido, identificacion, fecha_de_nacimiento, direccion, tipo_sangre, sexo, telefono, telefono_emergencia} = req.body
       
       const person = new Person()
       person.nombre = nombre;
@@ -13,7 +13,9 @@ export const createPerson = async (req: Request, res: Response) => {
       person.fecha_de_nacimiento = fecha_de_nacimiento;
       person.direccion = direccion;
       person.tipo_sangre = tipo_sangre;
-      person.sexo = sexo
+      person.sexo = sexo;
+      person.telefono = telefono;
+      person.telefono_emergencia = telefono_emergencia
       
   
       await person.save()
@@ -65,7 +67,7 @@ export const deletePerson = async (req: Request, res: Response) =>{
     if(result.affected === 0){
       return res.status(404).json({message:"usuario no existe"})
     }
-    return res.status(204)
+    return res.json({message: "El usuario fue borrado con exito"});
     } catch{
       if(error instanceof Error){
         return res.status(500).json({message: error.message})
@@ -84,3 +86,15 @@ export const getPersons = async (req: Request, res: Response) => {
     }
   }
   }
+
+  export const getPersonss = async (req: Request, res: Response) => {
+    try{
+      const {identificacion} = req.params
+    const person = await Person.findOneBy({id: parseInt(identificacion)})
+    return res.json(person)
+    }catch(error){
+      if(error instanceof Error){
+        return res.status(500).json({message: error.message})
+      }
+    }
+    }

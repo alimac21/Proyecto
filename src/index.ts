@@ -6,8 +6,8 @@ async function main () {
     try {
         await AppDataSourse.initialize ();
         console.log('Database conected')
-        app.listen(3000)
-        console.log('Server is listen on port', 3000)
+        app.listen(300)
+        console.log('Server is listen on port', 300)
     } catch(error) {
         console.error(error)
     }

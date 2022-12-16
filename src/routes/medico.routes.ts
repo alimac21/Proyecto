@@ -5,7 +5,7 @@ const router = Router();
 
 router.post("/medico", createMedico);
 
-router.get("/medicos", getMedicos);
+router.get("/medico", getMedicos);
 
 router.put('/medico/:id', UpdateMedico);
 

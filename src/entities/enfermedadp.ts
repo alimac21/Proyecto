@@ -1,12 +1,15 @@
 import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity} from 'typeorm'
 
 @Entity()
-export class Medico extends BaseEntity {
+export class Enfermedadp extends BaseEntity {
 @PrimaryGeneratedColumn()
 id: number;
 
 @Column({type: 'varchar'})
-estudio: string;
+nombre: string;
+
+@Column({type: 'varchar'})
+tipo: string;
 
 @CreateDateColumn()
 createdAt: Date;

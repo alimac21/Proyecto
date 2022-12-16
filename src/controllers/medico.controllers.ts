@@ -30,8 +30,7 @@ export const getMedicos = async (req: Request, res: Response) => {
       return res.status(500).json({mesagge: error.message})
     }
   }
-  
- 
+
 }
 
 export const UpdateMedico = async (req: Request, res: Response) => {
@@ -51,7 +50,7 @@ export const UpdateMedico = async (req: Request, res: Response) => {
     }
   }
 }
-//hnghlakshdlakshjd
+
 export const deleteMedico = async (req: Request, res: Response) =>{
   try{
     const{id} = req.params
@@ -63,7 +62,7 @@ export const deleteMedico = async (req: Request, res: Response) =>{
   if(result.affected === 0){
     return res.status(404).json({message:"usuario no existe"})
   }
-    return res.json(result);
+    return res.json({message: "El usuario fue borrado con exito"});
   } catch{
     if(error instanceof Error){
       return res.status(500).json({message: error.message})

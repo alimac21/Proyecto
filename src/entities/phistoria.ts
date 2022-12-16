@@ -1,36 +1,33 @@
 import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity} from 'typeorm'
 
 @Entity()
-export class Person extends BaseEntity {
+export class Phistoria extends BaseEntity {
 @PrimaryGeneratedColumn()
 id: number;
 
 @Column({type: 'varchar'})
-nombre: string;
+altura: string;
 
 @Column({type: 'varchar'})
-apellido: string;
+peso: string;
 
-@Column({type: 'varchar', unique: true})
-identificacion: number;
+@Column({type: 'varchar'})
+temperatura: string;
+
+@Column({type: 'varchar'})
+N_historia: string;
 
 @Column({type: 'date'})
-fecha_de_nacimiento: Date;
+fecha: Date;
 
 @Column({type: 'varchar'})
-direccion: string;
+tension: string;
 
 @Column({type: 'varchar'})
-tipo_sangre: string;
+sintomas: string;
 
 @Column({type: 'varchar'})
-sexo: string;
-
-@Column({type: 'varchar'})
-telefono: string;
-
-@Column({type: 'varchar'})
-telefono_emergencia: string;
+razon_visita: string;
 
 @CreateDateColumn()
 createdAt: Date;
