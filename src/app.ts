@@ -18,6 +18,9 @@ import analisisQRoutes from './routes/analisisQ.routes'
 import coprouroRoutes from './routes/coprouro.routes'
 import analisisCRoutes from './routes/analisisC.routes'
 import tcoprouroRoutes from './routes/tcoprouro.routes'
+import imgRoutes from './routes/img.routes'
+import analisisImgRoutes from './routes/analisisImg.routes'
+import personauxRoutes from './routes/personaux.routes'
 
 
 const app = express()
@@ -43,7 +46,9 @@ app.use(analisisQRoutes)
 app.use(coprouroRoutes)
 app.use(analisisCRoutes)
 app.use(tcoprouroRoutes)
-
+app.use(imgRoutes)
+app.use(analisisImgRoutes)
+app.use(personauxRoutes)
 
 
 export default app;
