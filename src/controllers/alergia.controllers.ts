@@ -37,9 +37,9 @@ export const UpdateAlergia = async (req: Request, res: Response) => {
     try{
       const {id} = req.params
     
-      const user = await Alergia.findOneBy({id: parseInt (req.params.id)});
+      const alergia = await Alergia.findOneBy({id: parseInt (req.params.id)});
       
-    if (!user) return res.status(404).json ({message: 'usuario no existe'});
+    if (alergia) return res.status(404).json ({message: 'usuario no existe'});
     
       await Alergia.update({id: parseInt(id) }, req.body)
     
