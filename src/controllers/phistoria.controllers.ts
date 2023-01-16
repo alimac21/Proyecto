@@ -1,10 +1,11 @@
 import { error } from "console";
 import { Request,Response } from "express";
+import { Person } from "../entities/person";
 import { Phistoria } from "../entities/phistoria";
 
 export const createPhistoria = async (req: Request, res: Response) => {
     try {
-      const {altura, peso, temperatura, N_historia, fecha, tension, sintomas, razon_visita} = req.body
+      const {altura, peso, temperatura, N_historia, fecha, tension, sintomas, razon_visita, identificacion_persona} = req.body
       
       const phistoria = new Phistoria()
       phistoria.altura = altura; 
@@ -14,11 +15,22 @@ export const createPhistoria = async (req: Request, res: Response) => {
       phistoria.fecha = fecha;
       phistoria.tension = tension;
       phistoria.sintomas = sintomas;
-      phistoria.razon_visita = razon_visita
+      phistoria.razon_visita = razon_visita;
+      phistoria.identificacion_persona = identificacion_persona;
 
-      
-  
-      await phistoria.save()
+      const validar_phistoria = await Person.findOneBy({id:parseInt(identificacion_persona)});
+      console.log('este es el valor de validar:', validar_phistoria)
+
+      if(!validar_phistoria){console.log('no se consiguio ese diavlo!')}
+      else{
+        
+        phistoria.save()
+      }
+      // console.log(validar_phistoria)
+      // if(validar_phistoria !== null){
+      //   console.log('entro a la condicion')
+      //   await phistoria.save()
+      // }
   
       return res.json(phistoria)
     } catch (error){

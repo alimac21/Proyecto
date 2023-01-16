@@ -4,12 +4,12 @@ import { User,} from "../entities/user";
 
 export const createUser = async (req: Request, res: Response) => {
   try {
-    const {firstname, lastname, email} = req.body
+    const {firstname, lastname, usuario} = req.body
     
     const user = new User()
     user.firstname = firstname;
     user.lastname = lastname;
-    user.email = email
+    user.usuario = usuario
 
     await user.save()
 

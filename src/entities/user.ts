@@ -12,7 +12,7 @@ firstname: string;
 lastname: string;
 
 @Column({unique: true})
-email: string;
+usuario: string;
 
 @Column({
   default: true

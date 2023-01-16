@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity} from 'typeorm'
+import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany, ManyToOne} from 'typeorm'
+import { Person } from './person';
 
 @Entity()
 export class Phistoria extends BaseEntity {
@@ -34,5 +35,8 @@ createdAt: Date;
 
 @UpdateDateColumn()
 updateAd: Date;
+
+@ManyToOne ( () => Person, (person) => person.identificacion)
+identificacion_persona:Person;
 
 }

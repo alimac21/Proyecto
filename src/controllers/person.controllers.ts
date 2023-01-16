@@ -1,6 +1,7 @@
 import { error } from "console";
 import { Request,Response } from "express";
 import { Person} from "../entities/person";
+import { Phistoria } from "../entities/phistoria";
 
 export const createPerson = async (req: Request, res: Response) => {
     try {
