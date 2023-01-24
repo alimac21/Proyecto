@@ -5,7 +5,7 @@ import { Phistoria } from "../entities/phistoria";
 
 export const createPerson = async (req: Request, res: Response) => {
     try {
-      const {nombre, apellido, identificacion, fecha_de_nacimiento, direccion, tipo_sangre, sexo, telefono, telefono_emergencia} = req.body
+      const {nombre, apellido, identificacion, fecha_de_nacimiento, direccion, tipo_sangre, sexo, telefono, telefono_emergencia, alergiap} = req.body
       
       const person = new Person()
       person.nombre = nombre;
@@ -16,7 +16,16 @@ export const createPerson = async (req: Request, res: Response) => {
       person.tipo_sangre = tipo_sangre;
       person.sexo = sexo;
       person.telefono = telefono;
-      person.telefono_emergencia = telefono_emergencia
+      person.telefono_emergencia = telefono_emergencia;
+      person.alergiap=alergiap
+
+      const validar_alergiap = await Person.findOneBy({id:parseInt(identificacion)});
+      console.log("este es el valor de validar:", validar_alergiap)
+
+      if(!validar_alergiap){console.log("no se consiguio esta persona")}
+      else{
+        alergiap.save()
+      }
       
   
       await person.save()

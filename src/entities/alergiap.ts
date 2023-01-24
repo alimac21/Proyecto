@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity} from 'typeorm'
+import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToMany, ManyToOne} from 'typeorm'
+import { Person } from './person';
 
 @Entity()
 export class Alergiap extends BaseEntity {
@@ -16,5 +17,8 @@ createdAt: Date;
 
 @UpdateDateColumn()
 updateAd: Date;
+
+@ManyToOne ( () => Person, (person) => person.alergiap)
+alergiap:Alergiap;
 
 }
