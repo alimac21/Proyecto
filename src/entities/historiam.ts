@@ -1,5 +1,6 @@
-import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne} from 'typeorm'
+import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne, OneToOne, JoinColumn} from 'typeorm'
 import { Person } from './person';
+import { Phistoria } from './phistoria';
 
 @Entity()
 export class Historiam extends BaseEntity {
@@ -18,7 +19,9 @@ createdAt: Date;
 @UpdateDateColumn()
 updateAd: Date;
 
-/*@ManyToOne ( () => Person, (person) => person.historiam)
-person: Person[];*/
+@OneToOne ( () => Phistoria, (phistoria) => phistoria.historiam)
+@JoinColumn()
+historiam:Phistoria[];
+
 
 }

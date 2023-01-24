@@ -14,4 +14,5 @@ createdAt: Date;
 @UpdateDateColumn()
 updateAd: Date;
 
+
 }
