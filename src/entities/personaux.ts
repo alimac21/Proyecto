@@ -1,5 +1,6 @@
-import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne} from 'typeorm'
+import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne, OneToMany} from 'typeorm'
 import { Person } from './person';
+import { Phistoria } from './phistoria';
 
 @Entity()
 export class Personaux extends BaseEntity {
@@ -18,4 +19,10 @@ updateAd: Date;
 @ManyToOne ( () => Person, (person) => person.personaux)
 personaux:Person[];
 
+
+@OneToMany ( () => Phistoria, (phistoria) => phistoria.personaunx)
+phistoria: Phistoria;
+
+@ManyToOne ( () => Person, (person) => person.personaux)
+person:Person;
 }

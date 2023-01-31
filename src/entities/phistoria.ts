@@ -1,6 +1,7 @@
 import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany, ManyToOne, OneToOne} from 'typeorm'
 import { Historiam } from './historiam';
 import { Person } from './person';
+import { Personaux } from './personaux';
 
 @Entity()
 export class Phistoria extends BaseEntity {
@@ -42,4 +43,7 @@ person:Person;
 
 @OneToOne ( () => Historiam, (historiam) => historiam.historiam)
 historiam:Phistoria;
+
+@ManyToOne ( () => Personaux, (personaux) => personaux.phistoria)
+personaunx:Personaux;
 }

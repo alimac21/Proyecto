@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity} from 'typeorm'
+import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany} from 'typeorm'
+import { Enfermedadp } from './enfermedadp';
 
 @Entity()
 export class Enfermedad extends BaseEntity {
@@ -14,4 +15,7 @@ createdAt: Date;
 @UpdateDateColumn()
 updateAd: Date;
 
+
+@OneToMany ( () => Enfermedadp, (enfermedadp) => enfermedadp.enfermedad)
+enfermedadp:Enfermedadp;
 }

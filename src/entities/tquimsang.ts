@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity} from 'typeorm'
+import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany} from 'typeorm'
+import { Quimsang } from './quimsang';
 
 @Entity()
 export class Tquimsang extends BaseEntity {
@@ -13,5 +14,8 @@ createdAt: Date;
 
 @UpdateDateColumn()
 updateAd: Date;
+
+@OneToMany ( () => Quimsang, (quimsang) => quimsang.tquimsang)
+quimsang: Quimsang[];
 
 }

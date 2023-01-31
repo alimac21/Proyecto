@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity} from 'typeorm'
+import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne} from 'typeorm'
+import { Tquimsang } from './tquimsang';
 
 @Entity()
 export class Quimsang extends BaseEntity {
@@ -14,4 +15,6 @@ createdAt: Date;
 @UpdateDateColumn()
 updateAd: Date;
 
+@ManyToOne ( () => Tquimsang, (tquimsang) => tquimsang.quimsang)
+tquimsang: Tquimsang;
 }

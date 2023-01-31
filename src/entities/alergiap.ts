@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToMany, ManyToOne} from 'typeorm'
+import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToMany, ManyToOne, OneToMany} from 'typeorm'
+import { Alergia } from './alergia';
 import { Person } from './person';
 
 @Entity()
@@ -18,7 +19,11 @@ createdAt: Date;
 @UpdateDateColumn()
 updateAd: Date;
 
-@ManyToOne ( () => Person, (person) => person.alergiap)
-alergiap:Alergiap;
+@OneToMany ( () => Person, (person) => person.alergiap)
+person:Person[];
+
+@OneToMany ( () => Alergia, (alergia) => alergia.alergiap)
+alergia: Alergia; 
+
 
 }

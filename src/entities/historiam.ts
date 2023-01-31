@@ -1,4 +1,7 @@
-import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne, OneToOne, JoinColumn} from 'typeorm'
+import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne, OneToOne, JoinColumn, OneToMany} from 'typeorm'
+import { Analisis } from './analisis';
+import { Enfermedad } from './enfermedad';
+import { Enfermedadp } from './enfermedadp';
 import { Person } from './person';
 import { Phistoria } from './phistoria';
 
@@ -23,5 +26,9 @@ updateAd: Date;
 @JoinColumn()
 historiam:Phistoria[];
 
+@OneToOne ( () => Analisis, (analisis) => analisis.historiam)
+analisis:Analisis[];
 
+@OneToMany ( () => Enfermedadp, (enfermedadp) => enfermedadp.historiam)
+enfermedadp:Enfermedadp[];
 }
