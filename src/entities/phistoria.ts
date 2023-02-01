@@ -46,4 +46,5 @@ historiam:Phistoria;
 
 @ManyToOne ( () => Personaux, (personaux) => personaux.phistoria)
 personaunx:Personaux;
+
 }

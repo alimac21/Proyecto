@@ -1,4 +1,5 @@
 import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany} from 'typeorm'
+import { Analisis } from './analisis';
 import { Quimsang } from './quimsang';
 
 @Entity()
@@ -17,5 +18,8 @@ updateAd: Date;
 
 @OneToMany ( () => Quimsang, (quimsang) => quimsang.tquimsang)
 quimsang: Quimsang[];
+
+@OneToMany ( () => Analisis, (analisis) => analisis.tquimsang)
+analisis:Analisis[];
 
 }

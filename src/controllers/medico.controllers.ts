@@ -1,13 +1,21 @@
 import { error } from "console";
 import { Medico } from "../entities/medico";
 import { Response, Request } from "express";
+import { Person } from "../entities/person";
 
 export const createMedico = async (req: Request, res: Response) => {
   try {
-     const {estudio} = req.body
+     const {estudio, person} = req.body
     
      const medico = new Medico()
      medico.estudio = estudio;
+     medico.person = person;
+
+     const validar_person = await Person.findOne ({where:{id:person}});
+
+     if (!validar_person){
+      return res.status(500).json({ message: "no se encontro esta persona"});
+    }
  
      await medico.save();
 

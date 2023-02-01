@@ -13,6 +13,6 @@ router.delete('/person/:id', deletePerson);
 
 router.get ('/person/:id', getPersons);
 
-router.get ('/person:/identificacion', getPersonss)
+router.get ('/person/:identificacion', getPersonss)
 
 export default router;

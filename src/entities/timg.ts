@@ -1,9 +1,10 @@
 import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany} from 'typeorm'
 import { Analisis } from './analisis';
-import { Coprouro } from './coprouro';
+import { Img } from './img';
+import { Quimsang } from './quimsang';
 
 @Entity()
-export class Tcoprouro extends BaseEntity {
+export class Timg extends BaseEntity {
 @PrimaryGeneratedColumn()
 id: number;
 
@@ -16,10 +17,10 @@ createdAt: Date;
 @UpdateDateColumn()
 updateAd: Date;
 
-@OneToMany ( () => Coprouro, (coprouro) => coprouro.tcoprouro)
-coprouro:Coprouro[];
+@OneToMany ( () => Img, (img) => img.timg)
+img:Img[];
 
-@OneToMany ( () => Analisis, (analisis) => analisis.tcoprouro)
-analisis: Analisis[];
+@OneToMany ( () => Analisis, (analisis) => analisis.timg)
+analisis:Analisis[];
 
 }

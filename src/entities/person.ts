@@ -1,4 +1,4 @@
-import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany, ManyToOne} from 'typeorm'
+import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany, ManyToOne, OneToOne} from 'typeorm'
 import { Alergiap } from './alergiap';
 import { Historiam } from './historiam';
 import { Medico } from './medico';
@@ -52,7 +52,7 @@ phistoria:Person[];
 @ManyToOne ( ()  => Alergiap, (alergiap) => alergiap.person)
 alergiap:Alergiap;
 
-@OneToMany ( () => Medico, (medico) => medico.person)
+@OneToOne ( () => Medico, (medico) => medico.person)
 medico: Medico[];
 
 @OneToMany ( () => Personaux, (personaux) => personaux.person)

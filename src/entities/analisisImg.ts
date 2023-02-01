@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, Column} from 'typeorm'
+import {Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, Column, ManyToOne} from 'typeorm'
+import { Img } from './img';
 
 @Entity()
 export class AnalisisImg extends BaseEntity {
@@ -13,5 +14,8 @@ createdAt: Date;
 
 @UpdateDateColumn()
 updateAd: Date;
+
+@ManyToOne ( () => Img, (img) => img.analisisimg)
+img:Img;
 
 }

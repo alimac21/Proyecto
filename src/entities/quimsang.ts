@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne} from 'typeorm'
+import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne, OneToMany} from 'typeorm'
+import { AnalisisQ } from './analisisQ';
 import { Tquimsang } from './tquimsang';
 
 @Entity()
@@ -17,4 +18,7 @@ updateAd: Date;
 
 @ManyToOne ( () => Tquimsang, (tquimsang) => tquimsang.quimsang)
 tquimsang: Tquimsang;
+
+@OneToMany ( () => AnalisisQ, (analisisQ) => analisisQ.quimsang)
+analisisQ: AnalisisQ[];
 }

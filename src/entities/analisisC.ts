@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, Column} from 'typeorm'
+import {Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, Column, ManyToOne} from 'typeorm'
+import { Coprouro } from './coprouro';
 
 @Entity()
 export class AnalisisC extends BaseEntity {
@@ -14,4 +15,7 @@ createdAt: Date;
 @UpdateDateColumn()
 updateAd: Date;
 
+
+@ManyToOne ( () => Coprouro, (coprouro) => coprouro.analisisC)
+coprouro:Coprouro;
 }

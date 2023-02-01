@@ -26,7 +26,7 @@ updateAd: Date;
 @JoinColumn()
 historiam:Phistoria[];
 
-@OneToOne ( () => Analisis, (analisis) => analisis.historiam)
+@OneToMany ( () => Analisis, (analisis) => analisis.historiam)
 analisis:Analisis[];
 
 @OneToMany ( () => Enfermedadp, (enfermedadp) => enfermedadp.historiam)

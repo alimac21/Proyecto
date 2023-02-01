@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne} from 'typeorm'
+import { join } from 'path';
+import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne, OneToOne, JoinColumn} from 'typeorm'
 import { Person } from './person';
 
 @Entity()
@@ -15,6 +16,7 @@ createdAt: Date;
 @UpdateDateColumn()
 updateAd: Date;
 
-@ManyToOne ( () => Person, (person) => person.medico)
+@OneToOne ( () => Person, (person) => person.medico)
+@JoinColumn()
 person: Person;
 }
