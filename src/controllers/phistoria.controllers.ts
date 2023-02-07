@@ -18,27 +18,26 @@ export const createPhistoria = async (req: Request, res: Response) => {
       phistoria.razon_visita = razon_visita;
       phistoria.person = person;
 
-      const validar_phistoria = await Person.findOneBy({id:parseInt(person)});
-      console.log('este es el valor de validar:', validar_phistoria)
 
-      if(!validar_phistoria){console.log('no se consiguió esta persona')}
-      else{
-        
-        phistoria.save()
-      }
-      // console.log(validar_phistoria)
-      // if(validar_phistoria !== null){
-      //   console.log('entro a la condicion')
-      //   await phistoria.save()
-      // }
-  
-      return res.json(phistoria)
-    } catch (error){
-      if (error instanceof Error){
-          return res.status(500).json({message: error.message});
-      }
+      const validar_person = await Person.findOneBy({id:parseInt(person)});
+      
+
+
+    if(!validar_person){
+      return res.status(500).json({ message: "no se encontro esta persona"});
     }
-}
+
+    await phistoria.save();
+
+    console.log(phistoria);
+
+    return res.json(phistoria);
+  } catch (error) {
+    if (error instanceof Error) {
+      return res.status(500).json({ message: error.message });
+    }
+  }
+};
 
 
 export const getPhistorias = async (req: Request, res: Response) => {

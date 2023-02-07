@@ -1,14 +1,23 @@
 import { error } from "console";
 import { Historiam } from "../entities/historiam";
 import { Response, Request } from "express";
+import { Phistoria } from "../entities/phistoria";
 
 export const createHistoriam = async (req: Request, res: Response) => {
   try {
-     const {recipe, indicaciones} = req.body
+     const {recipe, indicaciones, phistoria} = req.body
     
      const historiam = new Historiam()
      historiam.recipe = recipe;
      historiam.indicaciones = indicaciones;
+     historiam.phistoria = phistoria
+
+     const validar_phistoria = await Phistoria.findOneBy({id:parseInt(phistoria)});
+    
+
+    if(!validar_phistoria){
+      return res.status(500).json({ message: "no se encontro este registro"});
+    }
  
      await historiam.save();
 

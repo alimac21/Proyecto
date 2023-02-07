@@ -9,13 +9,6 @@ id: number;
 @Column({type: 'varchar'})
 resultado: string;
 
-@CreateDateColumn()
-createdAt: Date;
-
-@UpdateDateColumn()
-updateAd: Date;
-
-
 @ManyToOne ( () => Coprouro, (coprouro) => coprouro.analisisC)
 coprouro:Coprouro;
 }

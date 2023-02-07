@@ -9,12 +9,6 @@ id: number;
 @Column({type: 'varchar'})
 resultado: string;
 
-@CreateDateColumn()
-createdAt: Date;
-
-@UpdateDateColumn()
-updateAd: Date;
-
 @ManyToOne ( () => Img, (img) => img.analisisimg)
 img:Img;
 

@@ -10,12 +10,6 @@ id: number;
 @Column({type: 'date'})
 fecha: Date;
 
-@CreateDateColumn()
-createdAt: Date;
-
-@UpdateDateColumn()
-updateAd: Date;
-
 @ManyToOne ( () => Tcoprouro, (tcoprouro) => tcoprouro.coprouro)
 tcoprouro:Tcoprouro;
 

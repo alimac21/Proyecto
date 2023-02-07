@@ -10,12 +10,6 @@ id: number;
 @Column({type: 'varchar'})
 nombre: string;
 
-@CreateDateColumn()
-createdAt: Date;
-
-@UpdateDateColumn()
-updateAd: Date;
-
 @OneToMany ( () => Quimsang, (quimsang) => quimsang.tquimsang)
 quimsang: Quimsang[];
 

@@ -1,9 +1,10 @@
-import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany, ManyToOne, OneToOne} from 'typeorm'
+import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToMany, ManyToOne, OneToOne, JoinColumn} from 'typeorm'
 import { Alergiap } from './alergiap';
 import { Historiam } from './historiam';
 import { Medico } from './medico';
 import { Personaux } from './personaux';
 import { Phistoria } from './phistoria';
+import { User } from './user';
 
 @Entity()
 export class Person extends BaseEntity {
@@ -37,24 +38,20 @@ telefono: string;
 @Column({type: 'varchar'})
 telefono_emergencia: string;
 
-@CreateDateColumn()
-createdAt: Date;
-
-@UpdateDateColumn()
-updateAd: Date;
-
-@OneToMany ( () => Personaux, (personaux) => personaux.personaux)
-personaux:Person;
+@OneToOne ( () => Personaux, (personaux) => personaux.person)
+personaux:Personaux;
 
 @OneToMany ( () => Phistoria, (phistoria) => phistoria.person)
-phistoria:Person[]; 
+phistoria:Phistoria[];
 
-@ManyToOne ( ()  => Alergiap, (alergiap) => alergiap.person)
+@OneToMany ( ()  => Alergiap, (alergiap) => alergiap.person)
 alergiap:Alergiap;
 
 @OneToOne ( () => Medico, (medico) => medico.person)
-medico: Medico[];
+medico: Medico;
 
 @OneToMany ( () => Personaux, (personaux) => personaux.person)
-person:Person[];
+person:Person;
+
+
 }

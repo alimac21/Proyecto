@@ -10,12 +10,6 @@ id: number;
 @Column({type: 'date'})
 fecha: Date;
 
-@CreateDateColumn()
-createdAt: Date;
-
-@UpdateDateColumn()
-updateAd: Date;
-
 @ManyToOne ( () => Timg, (timg) => timg.img)
 timg:Timg;
 

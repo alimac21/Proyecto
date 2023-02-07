@@ -11,12 +11,6 @@ id: number;
 @Column({type: 'varchar'})
 nombre: string;
 
-@CreateDateColumn()
-createdAt: Date;
-
-@UpdateDateColumn()
-updateAd: Date;
-
 @OneToMany ( () => Img, (img) => img.timg)
 img:Img[];
 

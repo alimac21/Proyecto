@@ -32,17 +32,11 @@ sintomas: string;
 @Column({type: 'varchar'})
 razon_visita: string;
 
-@CreateDateColumn()
-createdAt: Date;
-
-@UpdateDateColumn()
-updateAd: Date;
-
-@ManyToOne ( () => Person, (person) => person.phistoria)
+@ManyToOne ( () => Person, (person) => person.phistoria, {eager: true})
 person:Person;
 
-@OneToOne ( () => Historiam, (historiam) => historiam.historiam)
-historiam:Phistoria;
+@OneToOne ( () => Historiam, (historiam) => historiam.phistoria)
+historiam: Historiam;
 
 @ManyToOne ( () => Personaux, (personaux) => personaux.phistoria)
 personaunx:Personaux;

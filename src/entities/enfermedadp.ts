@@ -13,12 +13,6 @@ nombre: string;
 @Column({type: 'varchar'})
 tipo: string;
 
-@CreateDateColumn()
-createdAt: Date;
-
-@UpdateDateColumn()
-updateAd: Date;
-
 @ManyToOne ( () => Historiam, (historiam) => historiam.enfermedadp)
 historiam:Historiam;
 

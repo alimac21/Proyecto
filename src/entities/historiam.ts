@@ -16,16 +16,10 @@ recipe: string;
 @Column({type: 'varchar'})
 indicaciones: string;
 
-@CreateDateColumn()
-createdAt: Date;
-
-@UpdateDateColumn()
-updateAd: Date;
-
-@OneToOne ( () => Phistoria, (phistoria) => phistoria.historiam)
+@OneToOne ( () => Phistoria, (phistoria) => phistoria.historiam, {eager: true})
 @JoinColumn()
-historiam:Phistoria[];
-
+phistoria: Phistoria;
+ 
 @OneToMany ( () => Analisis, (analisis) => analisis.historiam)
 analisis:Analisis[];
 

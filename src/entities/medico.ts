@@ -10,13 +10,10 @@ id: number;
 @Column({type: 'varchar'})
 estudio: string;
 
-@CreateDateColumn()
-createdAt: Date;
-
-@UpdateDateColumn()
-updateAd: Date;
-
 @OneToOne ( () => Person, (person) => person.medico)
 @JoinColumn()
 person: Person;
+
+
+
 }

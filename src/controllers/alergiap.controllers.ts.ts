@@ -1,17 +1,25 @@
 import { error } from "console";
 import { Alergiap } from "../entities/alergiap";
 import { Response, Request } from "express";
+import { Alergia } from "../entities/alergia";
 
 
 export const createAlergiap = async (req: Request, res: Response) => {
     try {
-       const {gravedad, fecha} = req.body
+       const {gravedad, fecha, alergia} = req.body
       
        const alergiap = new Alergiap()
        alergiap.gravedad = gravedad;
-       alergiap.fecha = fecha
+       alergiap.fecha = fecha;
+       alergiap.alergia = alergia
 
-   
+ 
+       const validar_alergia = await Alergia.findOneBy({id:parseInt(alergia)});
+    
+
+    if(!validar_alergia){
+      return res.status(500).json({ message: "no se encontro este registro"});
+    }
        await alergiap.save();
   
        return res.json(alergiap)

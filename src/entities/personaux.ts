@@ -1,4 +1,4 @@
-import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne, OneToMany} from 'typeorm'
+import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, ManyToOne, OneToMany, OneToOne, JoinColumn} from 'typeorm'
 import { Person } from './person';
 import { Phistoria } from './phistoria';
 
@@ -10,19 +10,14 @@ id: number;
 @Column({type: 'varchar'})
 tipo: string;
 
-@CreateDateColumn()
-createdAt: Date;
-
-@UpdateDateColumn()
-updateAd: Date;
-
-@ManyToOne ( () => Person, (person) => person.personaux)
-personaux:Person[];
+//@ManyToOne ( () => Person, (person) => person.personaux)
+//personaux:Person;
 
 
 @OneToMany ( () => Phistoria, (phistoria) => phistoria.personaunx)
 phistoria: Phistoria;
 
-@ManyToOne ( () => Person, (person) => person.personaux)
-person:Person;
+@OneToOne ( () => Person, (person) => person.personaux)
+@JoinColumn()
+person: Person;
 }

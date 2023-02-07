@@ -13,16 +13,10 @@ gravedad: string;
 @Column({type: 'date'})
 fecha: Date;
 
-@CreateDateColumn()
-createdAt: Date;
+@ManyToOne ( () => Person, (person) => person.alergiap)
+person:Person;
 
-@UpdateDateColumn()
-updateAd: Date;
-
-@OneToMany ( () => Person, (person) => person.alergiap)
-person:Person[];
-
-@OneToMany ( () => Alergia, (alergia) => alergia.alergiap)
+@ManyToOne ( () => Alergia, (alergia) => alergia.alergiap, {eager: true})
 alergia: Alergia; 
 
 

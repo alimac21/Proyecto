@@ -4,11 +4,4 @@ import {Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Base
 export class Enfermera extends BaseEntity {
 @PrimaryGeneratedColumn()
 id: number;
-
-@CreateDateColumn()
-createdAt: Date;
-
-@UpdateDateColumn()
-updateAd: Date;
-
 }
