@@ -10,5 +10,5 @@ id: number;
 nombre: string;
 
 @OneToMany ( () => Enfermedadp, (enfermedadp) => enfermedadp.enfermedad)
-enfermedadp:Enfermedadp;
-}
+enfermedadp:Enfermedadp[];
+} 

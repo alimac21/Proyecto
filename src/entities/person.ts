@@ -23,7 +23,7 @@ identificacion: number;
 @Column({type: 'date'})
 fecha_de_nacimiento: Date;
 
-@Column({type: 'varchar'})
+@Column({type: 'varchar'}) 
 direccion: string;
 
 @Column({type: 'varchar'})
@@ -44,7 +44,7 @@ personaux:Personaux;
 @OneToMany ( () => Phistoria, (phistoria) => phistoria.person)
 phistoria:Phistoria[];
 
-@OneToMany ( ()  => Alergiap, (alergiap) => alergiap.person)
+@ManyToOne ( ()  => Alergiap, (alergiap) => alergiap.person, {eager: true})
 alergiap:Alergiap;
 
 @OneToOne ( () => Medico, (medico) => medico.person)

@@ -13,10 +13,12 @@ nombre: string;
 @Column({type: 'varchar'})
 tipo: string;
 
-@ManyToOne ( () => Historiam, (historiam) => historiam.enfermedadp)
-historiam:Historiam;
+@OneToMany ( () => Historiam, (historiam) => historiam.enfermedadp)
+historiam:Historiam[];
 
-@ManyToOne ( () => Enfermedad, (enfermedad) => enfermedad.enfermedadp)
-enfermedad: Enfermedad[];
+@ManyToOne ( () => Enfermedad, (enfermedad) => enfermedad.enfermedadp, {eager: true})
+enfermedad: Enfermedad;
 
-}
+
+
+} 

@@ -8,6 +8,7 @@ export const createEstado = async (req: Request, res: Response) => {
 
     const estado = new Estado();
     estado.nombre_estado = nombre_estado;
+    estado.municipio = municipio;
    
     await estado.save();
 

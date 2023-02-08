@@ -6,6 +6,7 @@ import { Alergiap } from "../entities/alergiap";
 export const create = async (req: Request, res: Response) => {
     try{
         const{gravedad, fecha, alergia, nombre, apellido, identificacion, fecha_de_nacimiento, direccion, tipo_sangre, sexo, telefono, telefono_emergencia} = req.body
+       
         const queryRunner = AppDataSourse.createQueryRunner();
         queryRunner.connect();
         queryRunner.startTransaction()

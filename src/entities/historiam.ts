@@ -23,6 +23,6 @@ phistoria: Phistoria;
 @OneToMany ( () => Analisis, (analisis) => analisis.historiam)
 analisis:Analisis[];
 
-@OneToMany ( () => Enfermedadp, (enfermedadp) => enfermedadp.historiam)
-enfermedadp:Enfermedadp[];
+@ManyToOne ( () => Enfermedadp, (enfermedadp) => enfermedadp.historiam, {eager: true})
+enfermedadp:Enfermedadp;
 }

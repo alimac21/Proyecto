@@ -20,15 +20,13 @@ export const createPerson = async (req: Request, res: Response) => {
       person.telefono_emergencia = telefono_emergencia;
       person.alergiap=alergiap
 
+    
       const validar_alergiap = await Alergiap.findOneBy({id:parseInt(alergiap)});
-      console.log("este es el valor de validar:", validar_alergiap)
+    
 
-      if(!validar_alergiap){console.log("no se consiguio esta persona")}
-      else{
-        alergiap.save()
-      }
-
-      
+    if(!validar_alergiap){
+      return res.status(500).json({ message: "no se encontro este registro"});
+    }
       
   
       await person.save()
