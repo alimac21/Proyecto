@@ -21,6 +21,10 @@ import tcoprouroRoutes from './routes/tcoprouro.routes'
 import imgRoutes from './routes/img.routes'
 import analisisImgRoutes from './routes/analisisImg.routes'
 import personauxRoutes from './routes/personaux.routes'
+import estadoRoutes from './routes/estado.routes'
+import municipioRoutes from './routes/municipio.routes'
+import parroquiaRoutes from './routes/parroquia.routes'
+import localidadRoutes from './routes/parroquia.routes'
 
 
 const app = express()
@@ -48,6 +52,10 @@ app.use(tcoprouroRoutes)
 app.use(imgRoutes)
 app.use(analisisImgRoutes)
 app.use(personauxRoutes)
+app.use(estadoRoutes)
+app.use(municipioRoutes)
+app.use(parroquiaRoutes)
+app.use(localidadRoutes)
 
 
 export default app;

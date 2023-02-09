@@ -53,5 +53,7 @@ medico: Medico;
 @OneToMany ( () => Personaux, (personaux) => personaux.person)
 person:Person;
 
+@OneToOne ( () => User, (user) => user.person)
+user: User;
 
 }

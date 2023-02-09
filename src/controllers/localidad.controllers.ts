@@ -1,6 +1,5 @@
 import { Response, Request } from "express";
 import { Localidad } from "../entities/localidad";
-import { Municipio } from "../entities/municipio";
 import { Parroquia } from "../entities/parroquia";
 
 export const createLocalidad = async (req: Request, res: Response) => {
@@ -11,9 +10,9 @@ export const createLocalidad = async (req: Request, res: Response) => {
     localidad.nombre_localidad = nombre_localidad;
     localidad.parroquia = parroquia;
  
-    const validar_municipio = await Municipio.findOne({where:{id:parroquia}});
+    const validar_parroquia = await Parroquia.findOne({where:{id:parroquia}});
 
-    if(!validar_municipio){
+    if(!validar_parroquia){
       return res.status(500).json({ message: "no se encontro"});
     }
 

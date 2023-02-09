@@ -22,9 +22,9 @@ export class User extends BaseEntity {
   @UpdateDateColumn({ type: `date` })
   updatedAd!: Date;
 
-  /*@OneToOne(() => Person, (person) => person.user)
+  @OneToOne(() => Person, (person) => person.user)
   @JoinColumn()
-  person: Person[];*/
+  person: Person;
 
   @BeforeInsert()
   @BeforeUpdate()
