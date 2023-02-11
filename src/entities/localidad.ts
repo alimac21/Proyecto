@@ -2,7 +2,7 @@ import { BaseEntity, Column, Entity, ManyToOne,OneToMany, PrimaryGeneratedColumn
 import { Parroquia } from "./parroquia"; 
 import { Sector } from "./sector";
 
-@Entity("Localidad")
+@Entity()
 export class Localidad extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;

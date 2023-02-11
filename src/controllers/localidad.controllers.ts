@@ -30,12 +30,12 @@ export const createLocalidad = async (req: Request, res: Response) => {
 export const getLocalidad = async (req: Request, res: Response) => {
   try {
 
-    const { municipio_id } = req.query;
+    const { Parroquia_id } = req.query;
     
 
-    const localidad =  Localidad.createQueryBuilder("m").leftJoinAndSelect('m.municipio', 'municipio').where('1 = 1');
-    if(municipio_id) {
-      localidad.andWhere('m.municipioId = :municipio_id', {municipio_id});
+    const localidad =  Localidad.createQueryBuilder("m").leftJoinAndSelect('m.Parroquia', 'Parroquia').where('1 = 1');
+    if(Parroquia_id) {
+      localidad.andWhere('m.ParroquiaId = :Parroquia_id', {Parroquia_id});
   }
     
 
@@ -68,7 +68,7 @@ export const deleteLocalidad = async (req: Request, res: Response) => {
     const result = await Localidad.delete({ id: parseInt(id) });
 
     if (result.affected === 0) {
-      return res.status(404).json({ message: "Municipio not found" });
+      return res.status(404).json({ message: "Parroquia not found" });
     }
 
     return res.status(201).json({ message: "Se ha borrado exitosamente" });

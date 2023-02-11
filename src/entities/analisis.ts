@@ -9,7 +9,7 @@ export class Analisis extends BaseEntity {
 @PrimaryGeneratedColumn()
 id: number;
 
-@ManyToOne ( () => Historiam, (historiam) => historiam.analisis)
+@ManyToOne ( () => Historiam, (historiam) => historiam.analisis, {eager: true})
 historiam:Historiam;
 
 @ManyToOne ( () => Tquimsang, (tquimsang) => tquimsang.analisis)

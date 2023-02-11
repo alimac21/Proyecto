@@ -1,12 +1,19 @@
 import { error } from "console";
 import { Analisis } from "../entities/analisis";
 import { Response, Request } from "express";
+import { Historiam } from "../entities/historiam";
 
 export const createAnalisis = async (req: Request, res: Response) => {
     try {
-       const {} = req.body
+       const {historiam} = req.body
       
        const analisis = new Analisis()
+       analisis.historiam= historiam;
+
+       const validar_historiam = await Historiam.findOneBy({id:parseInt(historiam)});
+       if(!validar_historiam){
+         return res.status(500).json({ message: "no se encontro este registro"});
+       }
 
    
        await analisis.save();
@@ -15,7 +22,7 @@ export const createAnalisis = async (req: Request, res: Response) => {
      } catch (error){
        if (error instanceof Error){
            return res.status(500).json({message: error.message});
-       }
+       } 
      }
     
   

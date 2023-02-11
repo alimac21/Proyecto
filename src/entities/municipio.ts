@@ -11,10 +11,10 @@ export class Municipio extends BaseEntity {
   nombre_municipio: string;
 
     
-  @ManyToOne(() => Estado, (estado) =>  estado.municipio)
+  @ManyToOne(() => Estado, (estado) =>  estado.municipio, {eager: true})
   estado:Estado;
 
   @OneToMany(() => Parroquia, (parroquia) =>  parroquia.municipio)
-  parroquia:Parroquia[];
+  parroquia:Parroquia;
 
 }

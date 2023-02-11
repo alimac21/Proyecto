@@ -4,7 +4,6 @@ import cors from 'cors'
 import userRoutes from './routes/user.routes'
 import personRoutes from './routes/person.routes'
 import medicoRoutes from './routes/medico.routes'
-import enfermeraRoutes from './routes/enfermera.routes'
 import phistoriaRoures  from './routes/phistoria.routes'
 import historiamRoutres from './routes/historiam.routes'
 import alergiaRoutes from './routes/alergia.routes'
@@ -25,6 +24,7 @@ import estadoRoutes from './routes/estado.routes'
 import municipioRoutes from './routes/municipio.routes'
 import parroquiaRoutes from './routes/parroquia.routes'
 import localidadRoutes from './routes/parroquia.routes'
+import sectorRoutes from './routes/sector.routes'
 
 
 const app = express()
@@ -35,7 +35,6 @@ app.use(express.json())
 app.use(userRoutes)
 app.use(personRoutes)
 app.use(medicoRoutes)
-app.use(enfermeraRoutes)
 app.use(phistoriaRoures)
 app.use(historiamRoutres)
 app.use(alergiaRoutes)
@@ -56,6 +55,7 @@ app.use(estadoRoutes)
 app.use(municipioRoutes)
 app.use(parroquiaRoutes)
 app.use(localidadRoutes)
+app.use(sectorRoutes)
 
 
 export default app;

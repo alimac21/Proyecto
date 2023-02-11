@@ -4,6 +4,7 @@ import { Historiam } from './historiam';
 import { Medico } from './medico';
 import { Personaux } from './personaux';
 import { Phistoria } from './phistoria';
+import { Sector } from './sector';
 import { User } from './user';
 
 @Entity()
@@ -55,5 +56,8 @@ person:Person;
 
 @OneToOne ( () => User, (user) => user.person)
 user: User;
+
+@ManyToOne ( () => Sector, (sector) => sector.person, {eager: true})
+sector:Sector;
 
 }

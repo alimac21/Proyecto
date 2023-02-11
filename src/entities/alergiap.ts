@@ -2,7 +2,7 @@ import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColu
 import { Alergia } from './alergia';
 import { Person } from './person';
 
-@Entity()
+@Entity({})
 export class Alergiap extends BaseEntity {
 @PrimaryGeneratedColumn()
 id: number;

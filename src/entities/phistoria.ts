@@ -38,7 +38,7 @@ person:Person;
 @OneToOne ( () => Historiam, (historiam) => historiam.phistoria)
 historiam: Historiam;
 
-@ManyToOne ( () => Personaux, (personaux) => personaux.phistoria)
-personaunx:Personaux;
+@ManyToOne( () => Personaux, (personaux) => personaux.phistoria, {eager: true})
+personaux: Personaux;
 
 }

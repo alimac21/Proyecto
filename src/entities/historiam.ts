@@ -2,6 +2,7 @@ import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColu
 import { Analisis } from './analisis';
 import { Enfermedad } from './enfermedad';
 import { Enfermedadp } from './enfermedadp';
+import { Medico } from './medico';
 import { Person } from './person';
 import { Phistoria } from './phistoria';
 
@@ -25,4 +26,8 @@ analisis:Analisis[];
 
 @ManyToOne ( () => Enfermedadp, (enfermedadp) => enfermedadp.historiam, {eager: true})
 enfermedadp:Enfermedadp;
+
+@ManyToOne( () => Medico, (medico) => medico.historiam, {eager: true})
+medico: Medico;
+
 }

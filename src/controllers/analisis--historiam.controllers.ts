@@ -2,17 +2,16 @@ import { Response, Request } from "express";
 import {AppDataSourse } from "../db";
 import { Historiam } from "../entities/historiam";
 import { Analisis } from "../entities/analisis";
-import { Tquimsang } from "../entities/tquimsang";
-import { Tcoprouro } from "../entities/tcoprouro";
 
 export const create = async (req: Request, res: Response) => {
     try{
+        const {tquimsang, tcoprouro,timg, recipe, indicaciones, phistoria}= req.body
+
         const queryRunner = AppDataSourse.createQueryRunner();
         queryRunner.connect();
         queryRunner.startTransaction()
 
         const analisis = new Analisis ();
-        analisis.historiam = historiam;
         analisis.tquimsang = tquimsang;
         analisis.tcoprouro = tcoprouro;
         analisis.timg = timg
@@ -20,10 +19,13 @@ export const create = async (req: Request, res: Response) => {
 
 
         const historiam = new Historiam();
+        historiam.recipe = recipe;
+      historiam.indicaciones = indicaciones;
+      historiam.phistoria = phistoria
 
         try {
-            await queryRunner.manager.save(person);
-            await queryRunner.manager.save(alergiap);
+            await queryRunner.manager.save(historiam);
+            await queryRunner.manager.save(analisis);
       
             await queryRunner.commitTransaction();
           } catch (error) {
@@ -32,7 +34,7 @@ export const create = async (req: Request, res: Response) => {
               await queryRunner.release();
           }
       
-          return res.json([person, alergiap]);
+          return res.json([historiam, analisis]);
         } catch (error) {
           if (error instanceof Error) {
             return res.status(500).json({ message: error.message });
