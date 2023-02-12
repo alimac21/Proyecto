@@ -1,13 +1,21 @@
 import { error } from "console";
 import { AnalisisQ } from "../entities/analisisQ";
 import { Response, Request } from "express";
+import { Quimsang } from "../entities/quimsang";
 
 export const createAnalisisQ = async (req: Request, res: Response) => {
     try {
-       const {resultado} = req.body
+       const {resultado, quimsang} = req.body
       
        const analisisQ = new AnalisisQ()
        analisisQ.resultado = resultado;
+       analisisQ.quimsang = quimsang;
+
+       const validar_quimsang = await Quimsang.findOne ({where:{id:quimsang}});
+
+     if (!validar_quimsang){
+      return res.status(500).json({ message: "no se encontro esta persona"});
+    }
     
        await analisisQ.save();
   
@@ -66,7 +74,7 @@ export const deleteAnalisisQ = async (req: Request, res: Response) =>{
       }
     }
     
-}
+} 
 
 export const getAnalisisQ = async (req: Request, res: Response) => {
     try{

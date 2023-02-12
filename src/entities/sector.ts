@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Localidad } from "./localidad";
+import { Comunidad } from "./comunidad";
 import { Person } from "./person";
 
 @Entity()
@@ -10,8 +10,8 @@ export class Sector extends BaseEntity {
   @Column({ type: "varchar" })
   nombre_sector: string;
       
-  @ManyToOne(() => Localidad, (localidad) =>  localidad.sector, {eager: true})
-  localidad:Localidad; 
+  @ManyToOne( () => Comunidad, (comunidad) => comunidad.sector, {eager: true})
+  comunidad: Comunidad;
 
   @OneToMany ( () => Person, (person) => person.sector)
   person:Person;

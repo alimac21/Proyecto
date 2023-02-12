@@ -23,7 +23,7 @@ import personauxRoutes from './routes/personaux.routes'
 import estadoRoutes from './routes/estado.routes'
 import municipioRoutes from './routes/municipio.routes'
 import parroquiaRoutes from './routes/parroquia.routes'
-import localidadRoutes from './routes/parroquia.routes'
+import comunidadRoutes from './routes/comunidad.routes'
 import sectorRoutes from './routes/sector.routes'
 
 
@@ -54,7 +54,7 @@ app.use(personauxRoutes)
 app.use(estadoRoutes)
 app.use(municipioRoutes)
 app.use(parroquiaRoutes)
-app.use(localidadRoutes)
+app.use(comunidadRoutes)
 app.use(sectorRoutes)
 
 

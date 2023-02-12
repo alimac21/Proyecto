@@ -1,14 +1,22 @@
 import { error } from "console";
 import { Quimsang } from "../entities/quimsang";
-import { Response, Request } from "express";
+import { Response, Request } from "express"; 
+import { Tquimsang } from "../entities/tquimsang";
 
 
 export const createQuimsang = async (req: Request, res: Response) => {
     try {
-       const {fecha} = req.body
+       const {fecha, tquimsang} = req.body
       
        const quimsang = new Quimsang()
        quimsang.fecha = fecha;
+       quimsang.tquimsang = tquimsang;
+
+       const validar_tquimsang = await Tquimsang.findOne ({where:{id:tquimsang}});
+
+     if (!validar_tquimsang){
+      return res.status(500).json({ message: "no se encontro esta persona"});
+    }
     
        await quimsang.save();
   

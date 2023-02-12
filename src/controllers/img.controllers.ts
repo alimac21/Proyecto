@@ -1,14 +1,22 @@
 import { error } from "console";
 import { Img } from "../entities/img";
 import { Response, Request } from "express";
+import { Timg } from "../entities/timg";
 
 
 export const createImg = async (req: Request, res: Response) => {
     try {
-       const {fecha} = req.body
+       const {fecha, timg} = req.body
       
        const img = new Img()
        img.fecha = fecha;
+       img.timg = timg; 
+
+       const validar_timg = await Timg.findOne ({where:{id:timg}});
+
+     if (!validar_timg){
+      return res.status(500).json({ message: "no se encontro"});
+    }
     
        await img.save();
   
@@ -80,4 +88,4 @@ export const getImg = async (req: Request, res: Response) => {
         return res.status(500).json({message: error.message})
       }
     }
-}
+}  

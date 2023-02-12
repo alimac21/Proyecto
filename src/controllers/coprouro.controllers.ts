@@ -1,14 +1,22 @@
 import { error } from "console";
 import { Coprouro } from "../entities/coprouro";
 import { Response, Request } from "express";
+import { Tcoprouro } from "../entities/tcoprouro";
 
 
 export const createCoprouro = async (req: Request, res: Response) => {
     try {
-       const {fecha} = req.body
+       const {fecha, tcoprouro} = req.body
       
        const coprouro = new Coprouro()
        coprouro.fecha = fecha;
+       coprouro.tcoprouro = tcoprouro;
+
+       const validar_tcoprouro = await Tcoprouro.findOne ({where:{id:tcoprouro}});
+
+     if (!validar_tcoprouro){
+      return res.status(500).json({ message: "no se encontro esta persona"});
+    }
     
        await coprouro.save();
   
@@ -80,4 +88,4 @@ export const getCoprouro = async (req: Request, res: Response) => {
         return res.status(500).json({message: error.message})
       }
     }
-}
+} 

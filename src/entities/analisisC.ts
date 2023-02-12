@@ -9,6 +9,6 @@ id: number;
 @Column({type: 'varchar'})
 resultado: string;
 
-@ManyToOne ( () => Coprouro, (coprouro) => coprouro.analisisC)
+@ManyToOne ( () => Coprouro, (coprouro) => coprouro.analisisC, {eager: true})
 coprouro:Coprouro;
 }

@@ -1,13 +1,21 @@
 import { error } from "console";
 import { AnalisisC } from "../entities/analisisC";
 import { Response, Request } from "express";
+import { Coprouro } from "../entities/coprouro";
 
 export const createAnalisisC = async (req: Request, res: Response) => {
     try {
-       const {resultado} = req.body
+       const {resultado,coprouro} = req.body
       
        const analisisC = new AnalisisC()
        analisisC.resultado = resultado;
+       analisisC.coprouro = coprouro
+
+       const validar_coprouro = await Coprouro.findOne ({where:{id:coprouro}});
+
+     if (!validar_coprouro){
+      return res.status(500).json({ message: "no se encontro esta persona"});
+    }
     
        await analisisC.save();
   

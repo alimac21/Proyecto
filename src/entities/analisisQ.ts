@@ -9,6 +9,6 @@ id: number;
 @Column({type: 'varchar'})
 resultado: string;
 
-@ManyToOne( () => Quimsang, (quimsang) => quimsang.analisisQ)
+@ManyToOne( () => Quimsang, (quimsang) => quimsang.analisisQ, {eager: true})
 quimsang: Quimsang;
 }

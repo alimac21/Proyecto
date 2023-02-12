@@ -1,8 +1,6 @@
 import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Localidad } from "./localidad";
+import { Comunidad } from "./comunidad";
 import { Municipio } from "./municipio";
-
-
 
 @Entity("Parroquia")
 export class Parroquia extends BaseEntity {
@@ -16,7 +14,8 @@ export class Parroquia extends BaseEntity {
   @ManyToOne(() => Municipio, (municipio) =>  municipio.parroquia, {eager: true})
   municipio:Municipio;
 
-  @OneToMany( () => Localidad, (localidad) => localidad.parroquia)
-  localidad:Localidad[];
+  @OneToMany ( () => Comunidad, (comunidad) => comunidad.parroquia)
+  comunidad: Comunidad;
+
 
 }

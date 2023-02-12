@@ -10,7 +10,7 @@ id: number;
 @Column({type: 'date'})
 fecha: Date;
 
-@ManyToOne ( () => Timg, (timg) => timg.img)
+@ManyToOne ( () => Timg, (timg) => timg.img,{eager: true})
 timg:Timg;
 
 @OneToMany ( () => AnalisisImg, (analisisimg) => analisisimg.img)

@@ -10,7 +10,7 @@ id: number;
 @Column({type: 'date'})
 fecha: Date;
 
-@ManyToOne ( () => Tcoprouro, (tcoprouro) => tcoprouro.coprouro)
+@ManyToOne ( () => Tcoprouro, (tcoprouro) => tcoprouro.coprouro, {eager: true})
 tcoprouro:Tcoprouro;
 
 @OneToMany ( () => AnalisisC, (analisisC) => analisisC.coprouro)
