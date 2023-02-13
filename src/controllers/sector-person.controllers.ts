@@ -6,7 +6,7 @@ import { Sector } from "../entities/sector";
 export const create = async (req: Request, res: Response) => {
     try{
         const{nombre, apellido, identificacion, fecha_de_nacimiento, direccion, tipo_sangre, sexo, telefono, 
-        telefono_emergencia, alergiap, nombre_sector, localidad} = req.body
+        telefono_emergencia, alergiap, nombre_sector, comunidad} = req.body
         const queryRunner = AppDataSourse.createQueryRunner();
         queryRunner.connect();
         queryRunner.startTransaction()
@@ -25,7 +25,7 @@ export const create = async (req: Request, res: Response) => {
 
         const sector = new Sector();
         sector.nombre_sector = nombre_sector;
-        sector.localidad = localidad;
+        sector.comunidad = comunidad;
 
         try {
             await queryRunner.manager.save(person);

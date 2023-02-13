@@ -2,6 +2,7 @@ import { error } from "console";
 import { Historiam } from "../entities/historiam";
 import { Response, Request } from "express";
 import { Phistoria } from "../entities/phistoria";
+import { Person } from "../entities/person";
 
 export const createHistoriam = async (req: Request, res: Response) => {
   try {
@@ -95,3 +96,20 @@ export const UpdateHistoriam = async (req: Request, res: Response) => {
       }
     }
     }
+
+
+  export const getPersonHistoria = async (req: Request, res: Response) => {
+    //const {id} = req.params
+    const {identificacion} = req.body
+
+    try {
+      const guarda_historiam = await Historiam.find()
+      const buscar_persona = guarda_historiam.filter(x => x.phistoria.person.identificacion === identificacion)
+
+   return res.json(buscar_persona) 
+   } catch (error) {
+     if(error instanceof Error) {
+       return res.status(500).json({mesagge: error.message})
+     }
+   }
+  }

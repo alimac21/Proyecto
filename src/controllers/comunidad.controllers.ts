@@ -1,13 +1,22 @@
 import { Response, Request } from "express";
 import { Comunidad } from "../entities/comunidad";
+import { Parroquia } from "../entities/parroquia";
 
 
 export const createComunidad = async (req: Request, res: Response) => {
   try {
-    const {  nombre_comunidad, } = req.body;
+    const {  nombre_comunidad, parroquia} = req.body;
 
     const comunidad = new Comunidad();
     comunidad.nombre_comunidad = nombre_comunidad;
+    comunidad.parroquia = parroquia;
+
+    const validar_parroquia = await Parroquia.findOneBy({id:parseInt(parroquia)});
+    
+
+    if(!validar_parroquia){
+      return res.status(500).json({ message: "no se encontro este registro"});
+    }
    
     await comunidad.save();
 

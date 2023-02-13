@@ -2,7 +2,7 @@ import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColu
 import { Alergia } from './alergia';
 import { Person } from './person';
 
-@Entity({})
+@Entity()
 export class Alergiap extends BaseEntity {
 @PrimaryGeneratedColumn()
 id: number;
@@ -13,8 +13,8 @@ gravedad: string;
 @Column({type: 'date'})
 fecha: Date;
 
-@OneToMany ( () => Person, (person) => person.alergiap)
-person:Person[];
+@ManyToOne ( () => Person, (person) => person.alergiap)
+person:Person;
 
 @ManyToOne ( () => Alergia, (alergia) => alergia.alergiap, {eager: true})
 alergia: Alergia;  
