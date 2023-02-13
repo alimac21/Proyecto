@@ -45,7 +45,7 @@ personaux:Personaux;
 @OneToMany ( () => Phistoria, (phistoria) => phistoria.person)
 phistoria:Phistoria[];
 
-@OneToMany ( ()  => Alergiap, (alergiap) => alergiap.person, {eager: true})
+@OneToMany ( ()  => Alergiap, (alergiap) => alergiap.person)
 alergiap:Alergiap;
 
 @OneToOne ( () => Medico, (medico) => medico.person)

@@ -21,15 +21,6 @@ export const createPerson = async (req: Request, res: Response) => {
       person.alergiap=alergiap;
       person.sector = sector;
 
-    
-      const validar_alergiap = await Alergiap.findOneBy({id:parseInt(alergiap)});
-
-    if(!validar_alergiap){
-      //return res.status(500).json({ message: "no se encontro la alergia en el alergiap"});
-      console.log('fallo la validacion de alergia, colocando sin alergia')
-      
-    }
-
     const validar_sector = await Alergiap.findOneBy({id:parseInt(sector)});
     
 
