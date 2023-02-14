@@ -18,7 +18,6 @@ export const createPerson = async (req: Request, res: Response) => {
       person.sexo = sexo;
       person.telefono = telefono;
       person.telefono_emergencia = telefono_emergencia;
-      person.alergiap=alergiap;
       person.sector = sector;
 
     const validar_sector = await Alergiap.findOneBy({id:parseInt(sector)});
