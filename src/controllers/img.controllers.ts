@@ -10,10 +10,10 @@ export const createImg = async (req: Request, res: Response) => {
       
        const img = new Img()
        img.fecha = fecha;
-       img.timg = timg; 
+       img.timg = timg;  
 
        const validar_timg = await Timg.findOne ({where:{id:timg}});
-
+ 
      if (!validar_timg){
       return res.status(500).json({ message: "no se encontro"});
     }
@@ -88,4 +88,4 @@ export const getImg = async (req: Request, res: Response) => {
         return res.status(500).json({message: error.message})
       }
     }
-}  
+}   

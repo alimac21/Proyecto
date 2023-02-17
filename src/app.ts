@@ -25,6 +25,7 @@ import municipioRoutes from './routes/municipio.routes'
 import parroquiaRoutes from './routes/parroquia.routes'
 import comunidadRoutes from './routes/comunidad.routes'
 import sectorRoutes from './routes/sector.routes'
+import timgRoutes from './routes/timg.routes'
 
 
 const app = express()
@@ -56,6 +57,7 @@ app.use(municipioRoutes)
 app.use(parroquiaRoutes)
 app.use(comunidadRoutes)
 app.use(sectorRoutes)
+app.use(timgRoutes)
 
 
 export default app;

@@ -2,17 +2,32 @@ import { error } from "console";
 import { Analisis } from "../entities/analisis";
 import { Response, Request } from "express";
 import { Historiam } from "../entities/historiam";
+import { Tcoprouro } from "../entities/tcoprouro";
+import { Tquimsang } from "../entities/tquimsang";
 
 export const createAnalisis = async (req: Request, res: Response) => {
     try {
-       const {historiam} = req.body
+       const {historiam, timg, tcoprouro, tquimsang} = req.body
       
        const analisis = new Analisis()
        analisis.historiam= historiam;
+       analisis.timg = timg;
+       analisis.tcoprouro = tcoprouro;
+       analisis.tquimsang = tquimsang;
 
        const validar_historiam = await Historiam.findOneBy({id:parseInt(historiam)});
        if(!validar_historiam){
          return res.status(500).json({ message: "no se encontro este registro"});
+       }
+
+       const validar_tquimsang = await Tquimsang.findOneBy({id:parseInt(historiam)});
+       if(!validar_tquimsang){
+         return res.status(500).json({ message: "no se encontro este examen sanguineo"});
+       }
+
+       const validar_tcoprouro = await Tcoprouro.findOneBy({id:parseInt(historiam)});
+       if(!validar_tcoprouro){
+         return res.status(500).json({ message: "no se encontro este examen"});
        }
 
    

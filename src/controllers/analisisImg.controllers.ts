@@ -1,14 +1,24 @@
 import { error } from "console";
 import { AnalisisImg } from "../entities/analisisImg";
 import { Response, Request } from "express";
+import { Img } from "../entities/img";
 
 export const createAnalisisImg = async (req: Request, res: Response) => {
     try {
-       const {resultado} = req.body
+       const {resultado, img} = req.body
       
        const analisisImg = new AnalisisImg()
        analisisImg.resultado = resultado;
+       analisisImg.img= img;
+
+       
+const validar_img = await Img.findOne ({where:{id:img}});
+
+if (!validar_img){
+ return res.status(500).json({ message: "no se encontro esta persona"});
+}
     
+
        await analisisImg.save();
   
        return res.json(analisisImg)

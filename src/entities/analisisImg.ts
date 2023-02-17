@@ -9,7 +9,7 @@ id: number;
 @Column({type: 'varchar'})
 resultado: string;
 
-@ManyToOne ( () => Img, (img) => img.analisisimg)
+@ManyToOne ( () => Img, (img) => img.analisisimg, {eager: true})
 img:Img;
 
 }

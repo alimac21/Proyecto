@@ -1,31 +1,24 @@
 import { Response, Request } from "express";
 import {AppDataSourse } from "../db";
-import { Parroquia } from "../entities/parroquia";
-import { Municipio } from "../entities/municipio";
-import { Estado } from "../entities/estado";
-
+import { Img} from "../entities/img";
+import { Timg } from "../entities/timg";
 
 export const create = async (req: Request, res: Response) => {
     try{
-        const{ nombre_parroquia, nombre_municipio, estado} = req.body
-
+        const{nombre, fecha} = req.body
         const queryRunner = AppDataSourse.createQueryRunner();
         queryRunner.connect();
         queryRunner.startTransaction()
 
-        const parroquia = new Parroquia()  
-        parroquia.nombre_parroquia = nombre_parroquia;
+        const img = new Img();
+        img.fecha = fecha;
 
-
-        const municipio = new Municipio()
-        municipio.nombre_municipio = nombre_municipio;
-        municipio.parroquia = parroquia;
-        municipio.estado = estado;
-
+        const timg = new Timg();
+        timg.nombre = nombre;
 
         try {
-            await queryRunner.manager.save(parroquia);
-            await queryRunner.manager.save(municipio);
+            await queryRunner.manager.save(img);
+            await queryRunner.manager.save(timg);
       
             await queryRunner.commitTransaction();
           } catch (error) {
@@ -34,7 +27,7 @@ export const create = async (req: Request, res: Response) => {
               await queryRunner.release();
           }
       
-          return res.json([parroquia, municipio]);
+          return res.json([img, timg]);
         } catch (error) {
           if (error instanceof Error) {
             return res.status(500).json({ message: error.message });
@@ -42,4 +35,5 @@ export const create = async (req: Request, res: Response) => {
 
     }
 
-        }
+
+}

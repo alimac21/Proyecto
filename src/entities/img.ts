@@ -16,4 +16,4 @@ timg:Timg;
 @OneToMany ( () => AnalisisImg, (analisisimg) => analisisimg.img)
 analisisimg: AnalisisImg[];
 
-}
+}  

@@ -16,4 +16,4 @@ coprouro:Coprouro[];
 @OneToMany ( () => Analisis, (analisis) => analisis.tcoprouro)
 analisis: Analisis[];
 
-}
+} 

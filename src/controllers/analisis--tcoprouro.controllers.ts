@@ -1,31 +1,26 @@
 import { Response, Request } from "express";
 import {AppDataSourse } from "../db";
-import { Parroquia } from "../entities/parroquia";
-import { Municipio } from "../entities/municipio";
-import { Estado } from "../entities/estado";
-
+import { Analisis } from "../entities/analisis";
+import { Tcoprouro } from "../entities/tcoprouro";
+import { Timg } from "../entities/timg";
 
 export const create = async (req: Request, res: Response) => {
     try{
-        const{ nombre_parroquia, nombre_municipio, estado} = req.body
-
+        const{nombre, timg} = req.body
         const queryRunner = AppDataSourse.createQueryRunner();
         queryRunner.connect();
         queryRunner.startTransaction()
 
-        const parroquia = new Parroquia()  
-        parroquia.nombre_parroquia = nombre_parroquia;
+        const analisis = new Analisis();
+        analisis.timg = timg;
 
 
-        const municipio = new Municipio()
-        municipio.nombre_municipio = nombre_municipio;
-        municipio.parroquia = parroquia;
-        municipio.estado = estado;
-
+        const tcoprouro= new Tcoprouro();
+        tcoprouro.nombre = nombre;
 
         try {
-            await queryRunner.manager.save(parroquia);
-            await queryRunner.manager.save(municipio);
+            await queryRunner.manager.save(analisis);
+            await queryRunner.manager.save(tcoprouro);
       
             await queryRunner.commitTransaction();
           } catch (error) {
@@ -34,7 +29,7 @@ export const create = async (req: Request, res: Response) => {
               await queryRunner.release();
           }
       
-          return res.json([parroquia, municipio]);
+          return res.json([analisis, tcoprouro]);
         } catch (error) {
           if (error instanceof Error) {
             return res.status(500).json({ message: error.message });
@@ -42,4 +37,5 @@ export const create = async (req: Request, res: Response) => {
 
     }
 
-        }
+
+}

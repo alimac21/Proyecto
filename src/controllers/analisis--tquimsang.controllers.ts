@@ -5,13 +5,15 @@ import { Tquimsang } from "../entities/tquimsang";
 
 export const create = async (req: Request, res: Response) => {
     try{
-        const{nombre} = req.body
+        const{nombre, historiam, timg, tcoprouro} = req.body
         const queryRunner = AppDataSourse.createQueryRunner();
         queryRunner.connect();
         queryRunner.startTransaction()
 
         const analisis = new Analisis();
-        
+        analisis.historiam= historiam;
+       analisis.timg = timg;
+       analisis.tcoprouro = tcoprouro;
 
 
         const tquimsang = new Tquimsang ();
