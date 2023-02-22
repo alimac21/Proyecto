@@ -1,5 +1,5 @@
-import { compareSync, genSalt, hash } from 'bcrypt';
-import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity, BeforeInsert, BeforeUpdate, OneToOne, JoinColumn} from "typeorm";
+import { compareSync, genSalt, hash } from "bcrypt";
+import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn,BaseEntity, BeforeInsert, BeforeUpdate, OneToOne, JoinColumn,} from"typeorm";
 import { Person } from './person';
 
 @Entity()
@@ -22,7 +22,7 @@ export class User extends BaseEntity {
   @UpdateDateColumn({ type: `date` })
   updatedAd!: Date;
 
-  @OneToOne(() => Person, (person) => person.user)
+  @OneToOne(() => Person, (person) => person.user,{nullable:true})
   @JoinColumn()
   person: Person;
 
@@ -42,32 +42,3 @@ export class User extends BaseEntity {
   }
 
 }
-
-
-/*import {Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, BaseEntity} from 'typeorm'
-
-@Entity()
-export class User extends BaseEntity {
-  @PrimaryGeneratedColumn()
-id: number;
-
-@Column()
-firstname: string;
-
-@Column()
-lastname: string;
-
-@Column({unique: true})
-usuario: string;
-
-@Column({
-  default: true
-})
-active: boolean;
-
-@CreateDateColumn()
-createdAt: Date;
-
-@UpdateDateColumn()
-updateAd: Date;
-}*/

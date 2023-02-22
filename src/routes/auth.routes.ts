@@ -1,8 +1,10 @@
 import { Router } from "express";
-import {login} from "../controllers/auth.controlllers";
-
+import { loginCtrl/*, registerCtrl*/, logoutCtrl, meCtrl} from "../controllers/auth.controllers";
+import { authentication } from "../middlewares/authentication"
 export const router = Router();
 
-router.post("/login",login);
+router.post("/login", loginCtrl);
+router.post("/logout", logoutCtrl);
+router.get("/me", authentication, meCtrl);
 
-//router.post("/register",register);
+export default router;

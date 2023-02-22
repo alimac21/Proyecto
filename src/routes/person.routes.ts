@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createPerson, deletePerson, getPerson, getPersons, getPersonss, UpdatePerson, } from "../controllers/person.controllers";
+import { createPerson, deletePerson, getPerson, getPersons, UpdatePerson, buscarPersonasPorCedula } from "../controllers/person.controllers";
 
 const router = Router();
 
@@ -13,6 +13,8 @@ router.delete('/person/:id', deletePerson);
 
 router.get ('/person/:id', getPersons);
 
-router.get ('/person/:identificacion', getPersonss)
+//router.get ('/person/:identificacion', getPersonss)
+
+router.post ('/buscarPersonasPorCedula', buscarPersonasPorCedula)
 
 export default router;

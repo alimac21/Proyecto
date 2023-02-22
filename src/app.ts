@@ -26,6 +26,7 @@ import parroquiaRoutes from './routes/parroquia.routes'
 import comunidadRoutes from './routes/comunidad.routes'
 import sectorRoutes from './routes/sector.routes'
 import timgRoutes from './routes/timg.routes'
+import authRoutes from './routes/auth.routes'
 
 
 const app = express()
@@ -58,6 +59,7 @@ app.use(parroquiaRoutes)
 app.use(comunidadRoutes)
 app.use(sectorRoutes)
 app.use(timgRoutes)
+app.use(authRoutes)
 
 
 export default app;

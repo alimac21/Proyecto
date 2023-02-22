@@ -97,14 +97,31 @@ export const getPersons = async (req: Request, res: Response) => {
   }
   }
 
-  export const getPersonss = async (req: Request, res: Response) => {
-    try{
-      const {identificacion} = req.params
-    const person = await Person.findOneBy({id: parseInt(identificacion)})
-    return res.json(person)
-    }catch(error){
-      if(error instanceof Error){
-        return res.status(500).json({message: error.message})
-      }
+  // export const getPersonss = async (req: Request, res: Response) => {
+  //   try{
+  //     const {identificacion} = req.body
+  //   const person = await Person.findOneBy({id: parseInt(identificacion)})
+  //   return res.json(person)
+  //   }catch(error){
+  //     if(error instanceof Error){
+  //       return res.status(500).json({message: error.message})
+  //     }
+  //   }
+  //   }
+
+
+export const buscarPersonasPorCedula = async (req: Request, res: Response) => {
+  try{
+    const {identificacion} = req.body
+  const person = await Person.find(
+    {
+      where:{
+      identificacion: identificacion
+    }})
+  return res.json(person)
+  }catch(error){
+    if(error instanceof Error){
+      return res.status(500).json({message: error.message})
     }
-    }
+  }
+  }
